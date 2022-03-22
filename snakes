@@ -1,13 +1,29 @@
 # подключение модулей
 import pygame
+from random import randrange
 # константы
 WINDOW_SIZE = WINDOW_WIDTH, WINDOW_HEIGHT = (300,300)
+OBJECK_SIZE = 10
 # переменный и инициализация
 pygame.init()
 screen = pygame.display.set_mode(WINDOW_SIZE)
+y = randrange(0, WINDOW_HEIGHT, OBJECK_SIZE)
+x = randrange(0, WINDOW_WIDTH, OBJECK_SIZE)
+body_snake = [(x,y)]
+length_snake = 1
 # цикл программы
 while True:
+    # Показ экрана и закраска его в черный цвет
+     screen.fill(pygame.Color('black'))
+     # Отрисовка змейки
+     for i, j in body_snake:
+        pygame.draw.rect(screen, pygame.Color('green'), (i, j, OBJECT_SIZE, OBJECT_SIZE))
+        # Выход за границы экрана
+        if x < 0 or x > WINDOW_WIDTH or y < 0 or y > WINDOW_HEIGHT:
+            break
     # условие закрытия
-    for event in pygame.event.get():
-        if event.TYPE == pygame.QUIT:
-            exit()
+for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+        exit()
+    # Обновление экрана
+    pygame.display.flip()
